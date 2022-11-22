@@ -113,3 +113,10 @@ def api_setup_with_approved_status(api_setup_with_in_review_status):
     yield api_setup_with_in_review_status
 
 
+@pytest.fixture()
+def api_setup_partner_with_active_status():
+    request = requests.post(' https://b08cbmkhu1.execute-api.us-west-2.amazonaws.com/api/partners',
+                            json=api.api_body.partner_body(), headers=globals.info.admin_bearer)
+    response_body = request.json()
+    partner_id = response_body['data']['id']
+    yield partner_id

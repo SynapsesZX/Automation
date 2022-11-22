@@ -24,7 +24,6 @@ class TestApplicationDetailPageTechDetails:
         user.click_edit_icon()
         user.select_mobile_native()
         user = ApiSetup(driver)
-        time.sleep(10)
         user.delete_app(app)
 
     def test_test2(self, driver):
@@ -36,7 +35,6 @@ class TestApplicationDetailPageTechDetails:
         # app_id = user.get_app_id()
         user.open_link(
             f"https://qa-h360-marketplace.softservetest.com/developer/dashboard/application/{app}")
-        time.sleep(10)
         user.delete_app(app)
 
     def test_test3(self, driver, api_setup_created_status):
@@ -55,7 +53,7 @@ class TestApplicationDetailPageTechDetails:
         user.write_the_valid_url_to_the_smart_launch_url_field()
         user.write_the_valid_url_to_the_redirect_url_field()
         user.click_the_save_button()
-        time.sleep(30)
+
 
     def test_app_with_created_status(self, driver, api_setup_with_in_progress_status):
         user = DevLogin(driver)
@@ -63,7 +61,7 @@ class TestApplicationDetailPageTechDetails:
         user.dev_login()
         user = ApplicationDetailPageTechDetail(driver)
         user.proceed_to_the_application_with_created_status(api_setup_with_in_progress_status)
-        time.sleep(40)
+
 
     def test_app_with_in_review_status(self, driver, api_setup_with_in_review_status):
         user = DevLogin(driver)
@@ -71,7 +69,6 @@ class TestApplicationDetailPageTechDetails:
         user.dev_login()
         user = ApplicationDetailPageTechDetail(driver)
         user.proceed_to_the_application_with_in_review_status(api_setup_with_in_review_status)
-        time.sleep(40)
 
     def test_app_with_approved_status(self, driver, api_setup_with_approved_status):
         user = DevLogin(driver)
@@ -79,7 +76,7 @@ class TestApplicationDetailPageTechDetails:
         user.dev_login()
         user = ApplicationDetailPageTechDetail(driver)
         user.proceed_to_the_application_with_approved_status(api_setup_with_approved_status)
-        time.sleep(40)
+
 
     @pytest.mark.parametrize(('text'), [('Igor'), ('Semen')])
     def test_registration(self, driver, text):
@@ -87,4 +84,4 @@ class TestApplicationDetailPageTechDetails:
         user.open_link('https://qa-h360-marketplace.softservetest.com/developer/dashboard')
         user.click_the_start_now_button()
         user.write_data_in_the_email_input_field(text)
-        time.sleep(4)
+

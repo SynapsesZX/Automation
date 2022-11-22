@@ -1,10 +1,10 @@
-import time
+
 
 import globals.info
 import locators.tech_details
 from page_objects.base_page import BasePage
 from selenium.webdriver.common.by import By
-import conftest
+
 
 
 class ApplicationDetailPageTechDetail(BasePage):

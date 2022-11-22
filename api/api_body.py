@@ -101,3 +101,24 @@ def app_approved_body():
     '''
     data = json.loads(create_app_body)
     return data
+
+
+def partner_body():
+    create_partner_body = '''
+    {"address":"Dob-2A",
+    "city":"Kyiv",
+    "company_name":"QA",
+    "country":"UA",
+    "description":"<p>fg fghfghfg ffgf fhfghfghf</p>",
+    "categories":["47de5ab7-1500-4928-942c-9a7c567b8f7d","150b6a84-be3b-4074-a80f-ff398b0a19d5"],
+    "short_description":"fghgfhfghg gfhgfhfghf gfghfgg hfghfghf f",
+    "logo_path":"1669011606130179file_ugs4z4uljq34ee9dc1gh6dd.jpg",
+    "postal_code":"1223-A",
+    "state":"",
+    "website":"https://www.google.com/"}'''
+    data = json.loads(create_partner_body)
+    data['company_name'] = BasePage.randomWord(value=6)
+    data['description'] = BasePage.randomWord(value=35)
+    data['short_description'] = BasePage.randomWord(value=35)
+
+    return data

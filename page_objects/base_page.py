@@ -49,6 +49,24 @@ class BasePage:
         element = WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable((how, what)))
         element.click()
 
+    def wait_until_element_will_be_clickable(self, how, what, timeout=EXPLICITLY_WAIT_TIMEOUT):
+        """
+        Basic method to wait until button be clickable and click it
+        :param how: an argument that indicates how to search (css, id, xpath и i.e.)
+        :param what: an argument that indicates what to search for (selector string)
+        :param timeout: an argument that indicates how long to wait
+        """
+        WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable((how, what)))
+
+    def wait_until_element_will_be_visible(self, how, what, timeout=EXPLICITLY_WAIT_TIMEOUT):
+        """
+        Basic method to wait until button be clickable and click it
+        :param how: an argument that indicates how to search (css, id, xpath и i.e.)
+        :param what: an argument that indicates what to search for (selector string)
+        :param timeout: an argument that indicates how long to wait
+        """
+        WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((how, what)))
+
     def get_element_text(self, how, what, timeout=EXPLICITLY_WAIT_TIMEOUT):
         """
         Basic method to get text of the element
@@ -178,7 +196,6 @@ class BasePage:
         """
         self.driver.get(url=link)
 
-
     # Random Generators #
     def randomWord(value):
         """
@@ -262,12 +279,14 @@ class BasePage:
 
     def is_element_no_present_with_wait(self, how, what):
         try:
-            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((how, what)))
+            WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((how, what)))
             not_found = False
         except:
             not_found = True
 
         assert not_found, ("The element is displayed")
+
+
 
     def drag_and_drop(self, how_drag, what_drag, what_drop, to_drop):
         """
@@ -459,7 +478,5 @@ class BasePage:
         result = Color.from_string(colour).hex
         assert result == hex_code_for_assert
 
-
     def refresh_page(self):
         self.driver.refresh()
-
