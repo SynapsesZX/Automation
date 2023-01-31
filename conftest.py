@@ -93,8 +93,6 @@ def api_setup_with_in_progress_status(api_setup_created_status):
     yield api_setup_created_status
 
 
-
-
 @pytest.fixture()
 def api_setup_with_in_review_status(api_setup_with_in_progress_status):
     requests.patch(

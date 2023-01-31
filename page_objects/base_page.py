@@ -156,28 +156,6 @@ class BasePage:
         prop = step.get_attribute(attribute)
         assert prop == attribute_result
 
-    def get_element_property(self, how, what, property, timeout=EXPLICITLY_WAIT_TIMEOUT):
-        """
-                Basic method to send text to elements
-                :param how: an argument that indicates how to search (css, id, xpath и i.e.)
-                :param what: an argument that indicates what to search for (selector string)
-                :param property: an argument that indicates by what property you want to select (selector,string)
-                """
-        element = WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((how, what))).get_property(
-            property)
-        return element
-
-    def check_element_property(self, how, what, property_value, value_for_assert):
-        """
-                Basic method to send text to elements
-                :param how: an argument that indicates how to search (css, id, xpath и i.e.)
-                :param what: an argument that indicates what to search for (selector string)
-                :param property_value: an argument that indicates by what property you want to select (selector,string)
-                :param value_for_assert: an argument that indicates by what property you want assert your value (arg,string)
-                """
-        element = self.driver.find_element(how, what).get_property(property_value)
-        assert element == value_for_assert
-
     def get_element_attribute(self, how, what, attribute):
         """
         Basic method to send text to elements
@@ -285,8 +263,6 @@ class BasePage:
             not_found = True
 
         assert not_found, ("The element is displayed")
-
-
 
     def drag_and_drop(self, how_drag, what_drag, what_drop, to_drop):
         """
