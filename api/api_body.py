@@ -122,3 +122,35 @@ def partner_body():
     data['short_description'] = BasePage.randomWord(value=35)
 
     return data
+
+
+class PetStoreBody:
+    # function for generating the PetBody by Post method
+    def create_pet_body(self, pet_id, category_id, category_name, pet_name, tag_id, tag_name):
+        pet_body = '''
+    {
+      "id": 1,
+      "category": {
+        "id": 1,
+        "name": "Dog"
+      },
+      "name": "Rex",
+      "photoUrls": [
+        "string"
+      ],
+      "tags": [
+        {
+          "id": 1,
+          "name": "Pet"
+        }
+      ],
+      "status": "available"
+    }'''
+        pet_api = json.loads(pet_body)
+        pet_api["id"] = pet_id
+        pet_api["category"]["id"] = category_id
+        pet_api["category"]["name"] = category_name
+        pet_api["name"] = pet_name
+        pet_api['tags'][0]["id"] = tag_id
+        pet_api['tags'][0]["name"] = tag_name
+        return pet_api

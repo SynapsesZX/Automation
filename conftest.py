@@ -43,6 +43,7 @@ def driver(request):
         driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
 
 
+
     elif browser_name == "firefox":
         options = FirefoxOptions()
         options.add_argument('--no-sandbox')
@@ -51,6 +52,7 @@ def driver(request):
         options.add_argument("window-size=1920,1080")
         options.add_argument("--incognito")
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options)
+
     else:
         print(f"Browser <browser_name> is still not implemented")
     yield driver
